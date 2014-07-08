@@ -36,14 +36,14 @@ var server = app.listen(3000, function() {
       if (devices[i].status.name === 'OFF') {
         // Turn on the device.
         telldus.turnOn(id, function(err) {
-          res.send(devices[i].name + ' är nu aktiverad');
+          res.send(devices[i].name + ' is now activated');
         });
       }
       // Turn off device if on.
       else if (devices[i].status.name === 'ON') {
         // Turn off the device.
         telldus.turnOff(id, function(err) {
-          res.send(devices[i].name + ' är nu avaktiverad');
+          res.send(devices[i].name + ' is now deactivated');
         });
       }
     });
