@@ -308,21 +308,27 @@ input[type="checkbox"]:checked:after{
 .success {
   background: #4CD964;
 }
+
 .success:before {
   border-right-color: #aad5aa;
 }
+
 .success:after {
   content: "\f00c";
 }
+
 .error {
   background: #FF3B30;
 }
+
 .error:before {
   border-right-color: #f48e91;
 }
+
 .error:after {
   content: "\f00d";
 }
+
 #message {
   position: fixed;
   bottom: 0;
