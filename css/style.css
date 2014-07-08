@@ -1,0 +1,331 @@
+body {
+  position: relative;
+  margin: 0;
+  -webkit-text-size-adjust: none;
+  min-height: 416px;
+  font-family: "Helvetica Neue";
+  font-weight: lighter;
+  background: #D7D7D7;
+  -webkit-touch-callout: none;
+}
+
+.center {
+    margin: auto;
+    display: block;
+    text-align: center!important;
+}
+
+#title {
+    line-height: 44px;
+    height: 44px;
+    font-size: 16pt;
+    position: absolute;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #FFF;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 -1px 0;
+}
+
+.checkbox .name {
+    max-width: 75%
+}
+
+#topbar {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: auto;
+    background: #F7F7F7;
+    margin-bottom: 23px;
+}
+
+.success {
+  background: #4CD964 !important;
+}
+
+.topbar-title {
+  text-decoration: none;
+  color: #4C4C4C;
+  text-shadow: #FFF 0 1px 0;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+#content {
+    width: 100%;
+    position: relative;
+    min-height: 250px;
+    margin-top: 10px;
+    height: auto;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.actionLoading {
+  margin-top: 0px !important;
+}
+
+.pageitem {
+    background-color: #fff;
+    font-size: 12pt;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    display: block;
+    height: auto;
+    width: auto;
+    margin: 3px 9px 17px;
+    list-style: none;
+}
+
+.graytitle {
+  margin: 10px;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.pageitem li:first-child, .pageitem li.form:first-child {
+    border-top: 0;
+}
+
+.checkbox{
+    position: relative;
+    list-style-type: none;
+    display: block;
+    height: 43px;
+    overflow: hidden;
+    border-top: 1px solid #d5dadc;
+    width: auto;
+}
+
+.checkbox .name{
+    margin: 11px 0 0 7px;
+    width: auto;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    float: left;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: inset 0px 0px 0px 1px #e6e6e6;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 1px;
+  display: inline-block;
+  width: 52px;
+  height: 31px;
+  border: 0;
+  float: right;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s ease-out;
+  margin-top: 6px;
+  transform: scale(1);
+  -webkit-transform: scale(1); /* Adjust size here */
+}
+
+input[type=checkbox]:checked{
+  box-shadow: inset 0px 0px 0px 20px #3388ee;
+}
+
+input[type=checkbox]:after{
+  content: '';
+  position: absolute;
+  width: 29px;
+  height: 29px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px 1px rgba(0,0,0,.2);
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.1s ease-in .1s;
+}
+input[type="checkbox"]:checked:after{
+  left: 22px;
+}
+
+#footer {
+  text-align: center;
+  position: relative;
+  margin: 20px 10px 0;
+  height: auto;
+  width: auto;
+  bottom: 10px;
+}
+
+@-webkit-keyframes three-quarters {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes three-quarters {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes three-quarters {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes three-quarters {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* Styles for old versions of IE */
+.three-quarters {
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+/* :not(:required) hides this rule from IE9 and below */
+.three-quarters:not(:required) {
+  -webkit-animation: three-quarters 1250ms infinite linear;
+  -moz-animation: three-quarters 1250ms infinite linear;
+  -ms-animation: three-quarters 1250ms infinite linear;
+  -o-animation: three-quarters 1250ms infinite linear;
+  animation: three-quarters 1250ms infinite linear;
+  border: 8px solid #3388ee;
+  border-right-color: transparent;
+  border-radius: 16px;
+  box-sizing: border-box;
+  margin-top: 55px;
+  text-indent: -9999px;
+  width: 32px;
+  height: 32px;
+}
+
+
+.success,
+.error {
+  max-width: 100%;
+  margin: 3px 9px 17px;
+  position: relative;
+  padding: 1em 1em 1em 4em;
+  border-radius: 2px;
+  color: #FFF;
+}
+
+.success a:hover,
+.error a:hover {
+  border-bottom: none;
+}
+
+.success:before,
+.error:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3em;
+  display: inline-block;
+  border-right: 1px solid transparent;
+}
+
+.success:after,
+.error:after {
+  position: absolute;
+  top: 50%;
+  left: 1em;
+  min-width: 1.1em;
+  text-align: center;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.success {
+  background: #4CD964;
+}
+.success:before {
+  border-right-color: #aad5aa;
+}
+.success:after {
+  content: "\f00c";
+}
+.error {
+  background: #FF3B30;
+}
+.error:before {
+  border-right-color: #f48e91;
+}
+.error:after {
+  content: "\f00d";
+}
+#message {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
