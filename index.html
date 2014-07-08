@@ -15,6 +15,7 @@
   <body ng-controller="ihcCtrl">
     <div id="topbar">
       <span class="topbar-title center">IHC</span>
+      <a href="javascript:location.reload(true)" ng-show="contentLoaded && !err" class="button button-rounded button-flat-primary"><i class="fa fa-refresh center"></i></a>
     </div>
     <div id="content" ng-init="updateDevices();">
       <form method="post">
