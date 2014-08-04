@@ -52,6 +52,7 @@ var server = app.listen(3000, function() {
   // Endpoint for getting temperature.
   app.get('/getTemp', function(req, res) {
     exec('tdtool --list-sensors', function (error, stdout, stderr) {
+      // Strip response so that we only get the numeric degrees.
       var regex = /temperature=(\d+.\d+)/i;
       var temperature = regex.exec(stdout)[1];
       res.send(temperature + '°C');

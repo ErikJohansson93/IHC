@@ -6,7 +6,10 @@ idelinjen.config(function($httpProvider){
 
 idelinjen.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
 
-  $http({method: 'GET', url: 'http://192.168.0.5:3000/getTemp'}).success(function(data) {
+  // Specify the server ip-address.
+  var ip_address = '192.168.0.5';
+
+  $http({method: 'GET', url: 'http://' + ip_address + ':3000/getTemp'}).success(function(data) {
     // Get temperature.
     $scope.temp = data;
 
@@ -27,7 +30,7 @@ idelinjen.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
     $scope.actionLoading = true;
 
     // Do request to toggle devices status.
-    $http({method: 'GET', url: 'http://192.168.0.5:3000/toggleDevice/' + device.id}).success(function(response) {
+    $http({method: 'GET', url: 'http://' + ip_address + ':3000/toggleDevice/' + device.id}).success(function(response) {
       // Set the request as success.
       $scope.success = true;
 
@@ -50,7 +53,7 @@ idelinjen.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
    */
   $scope.updateDevices = function() {
     // Do request to update devices status.
-    $http({method: 'GET', url: 'http://192.168.0.5:3000/getDevices'}).success(function(data) {
+    $http({method: 'GET', url: 'http://' + ip_address + ':3000/getDevices'}).success(function(data) {
       // Store devices in scope.
       $scope.devices = data;
     }).error(function(data) {
