@@ -15,9 +15,9 @@ Visit your host machine at its ip-address. Also make sure that telldusd is runni
 
 3. Set the ip-address for your host on line 10 in js/app.js. (Defaults to 192.168.0.5)
 
-4. Start node js server with `node app.js`
+4. Start node js server with `node server.js`
 
-4. Visit the ip-address of that runs the node js server.
+5. Visit the ip-address of that runs the node js server.
 
 ---
 
