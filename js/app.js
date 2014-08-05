@@ -1,10 +1,10 @@
-var idelinjen = angular.module('ihc', []);
+var ihc = angular.module('ihc', []);
 
-idelinjen.config(function($httpProvider){
+ihc.config(function($httpProvider){
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
-idelinjen.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
+ihc.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
 
   // Specify the server ip-address.
   var ip_address = '192.168.0.5';
