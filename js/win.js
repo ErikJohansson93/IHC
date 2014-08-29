@@ -20,5 +20,10 @@ menu.items[2].click = function() {
   gui.App.quit();
 };
 
-tray.menu = menu;
+// Hide app when focus is lost.
+win.on('blur', function() {
+  win.hide();
+});
 
+// Set menu.
+tray.menu = menu;
