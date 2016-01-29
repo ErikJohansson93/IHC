@@ -1,33 +1,50 @@
 var ihc = angular.module('ihc', []);
+var ihc = angular.module('ihc', ['ngCookies']);
 
 ihc.config(function($httpProvider){
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
-ihc.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
+ihc.controller('ihcCtrl', function ($scope, $http, $window, $cookieStore) {
+  if ($cookieStore.get('ip-address') !== undefined) {
+    // Specify the server ip-address.
+    var ip_address = $cookieStore.get('ip-address');
 
-  // Specify the server ip-address.
-  var ip_address = '192.168.0.5';
+    // Content is loaded.
+    $scope.ip_set = true;
+    $scope.contentLoaded = true;
+    $scope.online = true;
+  }
 
-  $http({method: 'GET', url: 'http://' + ip_address + ':3000/getTemp'}).success(function(data) {
-    // Get temperature.
-    $scope.temp = data;
+  /**
+   * Function that toggles the power of and device.
+   */
+  $scope.setIP = function(ipAddress) {
+    // Store cookie.
+    $cookieStore.put("ip-address", ipAddress);
+
+    // Show devices form.
+    $scope.ip_set = true;
 
     // Content is loaded.
     $scope.contentLoaded = true;
-  }).error(function(data) {
-    $scope.err = true;
-    $scope.message = data;
-  });
+    $scope.online = true;
+
+    // Get list.
+    $scope.updateDevices();
+  }
 
   /**
    * Function that toggles the power of and device.
    */
   $scope.togglePower = function(device) {
-    // Set togglePower init variables.
-    $scope.success = false;
-    $scope.err = false;
-    $scope.actionLoading = true;
+    // Bail if IP not set.
+    if ($cookieStore.get('ip-address') === undefined) {
+      return;
+    }
+
+    // Set IP-address.
+    var ip_address = $cookieStore.get('ip-address');
 
     // Do request to toggle devices status.
     $http({method: 'GET', url: 'http://' + ip_address + ':3000/toggleDevice/' + device.id}).success(function(response) {
@@ -52,14 +69,22 @@ ihc.controller('ihcCtrl', function ($scope, $http, $timeout, $window) {
    * Function that gets an updated list of devices.
    */
   $scope.updateDevices = function() {
+    // Bail if IP not set.
+    if ($cookieStore.get('ip-address') === undefined) {
+      return;
+    }
+
+    // Set IP-address.
+    var ip_address = $cookieStore.get('ip-address');
+
     // Do request to update devices status.
     $http({method: 'GET', url: 'http://' + ip_address + ':3000/getDevices'}).success(function(data) {
       // Store devices in scope.
       $scope.devices = data;
     }).error(function(data) {
+      console.log(data);
       // Show error message.
       $scope.err = true;
-
       // Set message.
       $scope.message = data;
     });
