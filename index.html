@@ -38,7 +38,9 @@
         <ul class="pageitem">
           <li class="checkbox" ng-repeat="device in devices">
             <span class="name">{{device.name}}</span>
-            <input id="{{device.id}}" name="{{device.name}}" ng-disabled="actionLoading" ng-checked="{{device.status.name == 'ON'}}" ng-click="togglePower(device);" type="checkbox" />
+            <input ng-show="{{device.model == 'selflearning-switch:nexa'}}" id="{{device.id}}" name="{{device.name}}" ng-disabled="actionLoading" ng-checked="{{device.status.name == 'ON'}}" ng-click="togglePower(device);" type="checkbox" />
+            <select class="dimmer" ng-show="{{device.model == 'selflearning-dimmer:nexa'}}" id="{{device.id}}" name="{{device.name}}" ng-change="dimDevice(device, this.value);" ng-model="value" ng-disabled="actionLoading">
+            </select>
           </li>
         </ul>
         </fieldset>
@@ -52,4 +54,19 @@
       </div>
     </div>
   </body>
+  <footer>
+    <script type="text/javascript">
+      var dimmer = document.getElementsByClassName("dimmer");
+
+      for (device = 0; device < dimmer.length; device++) {
+        //Create and append the options
+        for (var i = 0; i < 256; i++) {
+          var option = document.createElement("option");
+          option.setAttribute("value", i);
+          option.text = i;
+          dimmer[device].appendChild(option);
+        }
+      }
+    </script>
+  </footer>
 </html>

@@ -22,6 +22,24 @@ var server = app.listen(3000, function() {
     });
   });
 
+
+  // Endpoint for dimming a device.
+  app.get('/dimDevice/:device/:level', function(req, res){
+    // Get device.
+    var id = parseInt(req.params.device);
+    var level = parseInt(req.params.level);
+
+    // Get array key.
+    var i = id - 1;
+
+    telldus.getDevices(function(err, devices) {
+      // Dim.
+      telldus.dim(devices[i].id, parseInt(req.params.level),function(err) {
+       res.send(devices[i].name + ' is dimmed to ' + req.params.level + '%');
+      });
+    });
+  });
+
   // Endpoint for Turning on an device.
   app.get('/toggleDevice/:input', function(req, res){
     // Get and id and set it as an int.

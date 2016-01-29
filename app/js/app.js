@@ -10,7 +10,9 @@ ihc.controller('ihcCtrl', function ($scope, $http, $window, $cookieStore) {
     // Specify the server ip-address.
     var ip_address = $cookieStore.get('ip-address');
 
-    // Content is loaded.
+    var dimmer = document.getElementsByClassName("dimmer");
+
+    // Initial value
     $scope.ip_set = true;
     $scope.contentLoaded = true;
     $scope.online = true;
@@ -43,11 +45,8 @@ ihc.controller('ihcCtrl', function ($scope, $http, $window, $cookieStore) {
       return;
     }
 
-    // Set IP-address.
-    var ip_address = $cookieStore.get('ip-address');
-
     // Do request to toggle devices status.
-    $http({method: 'GET', url: 'http://' + ip_address + ':3000/toggleDevice/' + device.id}).success(function(response) {
+    $http({method: 'GET', url: 'http://' + $cookieStore.get('ip-address') + ':3000/toggleDevice/' + device.id}).success(function(response) {
       // Set the request as success.
       $scope.success = true;
 
@@ -65,6 +64,23 @@ ihc.controller('ihcCtrl', function ($scope, $http, $window, $cookieStore) {
     $scope.actionLoading = false;
   };
 
+  $scope.dimDevice = function(device, level) {
+    // Do request to update devices status.
+    $http({method: 'GET', url: 'http://' + $cookieStore.get('ip-address') + ':3000/dimDevice/' + device.id + '/' + level}).success(function(data) {
+      // Set the request as success.
+      $scope.success = true;
+
+      // Set message.
+      $scope.message = data;
+    }).error(function(data) {
+      console.log(data);
+      // Show error message.
+      $scope.err = true;
+      // Set message.
+      $scope.message = data;
+    });
+  };
+
   /**
    * Function that gets an updated list of devices.
    */
@@ -74,15 +90,11 @@ ihc.controller('ihcCtrl', function ($scope, $http, $window, $cookieStore) {
       return;
     }
 
-    // Set IP-address.
-    var ip_address = $cookieStore.get('ip-address');
-
     // Do request to update devices status.
-    $http({method: 'GET', url: 'http://' + ip_address + ':3000/getDevices'}).success(function(data) {
+    $http({method: 'GET', url: 'http://' + $cookieStore.get('ip-address') + ':3000/getDevices'}).success(function(data) {
       // Store devices in scope.
       $scope.devices = data;
     }).error(function(data) {
-      console.log(data);
       // Show error message.
       $scope.err = true;
       // Set message.
